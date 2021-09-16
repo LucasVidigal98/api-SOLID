@@ -1,0 +1,111 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API-SOLID Documentation",
+    "version": "1.0.0",
+    "contact": {
+      "email": "lucasvidigal3@gmail.com"
+    }
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": ["User"],
+        "sumary": "Create a new user",
+        "description": "Create a new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Name of the user",
+                  "email": "email of the user"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "User already exists"
+          }
+        }
+      }
+    },
+    "/users/{user_id}/admin": {
+      "patch": {
+        "tags": ["User"],
+        "sumary": "Turn user to a admin",
+        "description": "Turn user to a admin",
+        "parameters": {
+          "name": "user_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/users/": {
+      "get": {
+        "tags": ["User"],
+        "sumary": "Get all users",
+        "description": "Get all users",
+        "parameters": {
+          "name": "user_id",
+          "in": "header",
+          "type": "string",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/users/{user_id}": {
+      "get": {
+        "tags": ["User"],
+        "sumary": "Get a user by id",
+        "description": "Get all user by id",
+        "parameters": {
+          "name": "user_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    }
+  }
+}
